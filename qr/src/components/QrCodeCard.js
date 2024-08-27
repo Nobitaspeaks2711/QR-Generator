@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import QRCode from 'qrcode';
+import './QrCodeCard.css'; // Assuming your CSS is in this file
 
 function QrCodeCard() {
   const [url, setUrl] = useState('');
@@ -30,7 +31,7 @@ function QrCodeCard() {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+    <div className="qr-code-generator">
       <h1>QR Code Generator</h1>
       <input
         type="url"
@@ -39,17 +40,23 @@ function QrCodeCard() {
         onChange={handleInputChange}
         onKeyDown={(e) => e.key === 'Enter' && handleGenerate()}
       />
-      <button onClick={handleGenerate}>Generate</button>
-      <button onClick={handleClear}>Clear</button>
-      {alertMessage && <div className="mt-2 mb-1">{alertMessage}</div>}
+      <div className="button-group">
+        <button onClick={handleGenerate}>Generate</button>
+        <button onClick={handleClear}>Clear</button>
+      </div>
+      {alertMessage && <div className="alert-message">{alertMessage}</div>}
       {qrCode && (
-        <div>
+        <div className="qr-code-container">
           <img src={qrCode} alt="qr-code" />
-          <button>
-            <a download="qrCode.png" href={qrCode} className="w-full">
-              Download
+          <a download="qrCode.png" href={qrCode} className="download-button">
+            Download
+          </a>
+          <footer className="footer">
+            Created by @ 
+            <a href="https://github.com/Nobitaspeaks2711" target="_blank" rel="noopener noreferrer">
+              vaibhav
             </a>
-          </button>
+          </footer>
         </div>
       )}
     </div>
