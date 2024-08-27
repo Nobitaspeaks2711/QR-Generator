@@ -1,4 +1,3 @@
-Here's a sample `README.md` file for your QR Code Generator React project. This document includes details about the project, setup instructions, usage guidelines, and other relevant information.
 
 ### `README.md`
 
